@@ -7,21 +7,29 @@ The main objective of this project is to collect and process data from the selec
 + To see the server in action please visit [https://cropnet.eng.hawaii.edu/](https://cropnet.eng.hawaii.edu/)
 + To learn how to use the **API**, please visit [https://cropnet.eng.hawaii.edu/api](https://cropnet.eng.hawaii.edu/api)
 
-## Introduction
+## Gaussian Process Autoregression
 
-To establish a benchmark for the most simple forecasting scenario, we execute the basic GPR code (implemented in Matlab). In this scenario, the entire series is used for training, except the last three years that is used for testing. 
+To establish a benchmark for the most simple forecasting scenario, we execute a basic Gaussian Process Regression (GPR) code. In this scenario, the entire series is used for training.
 
 This analysis and all other analysis in this document are based on an autoregressive approach that assumes the pattern of fluctuations is repeated and the value at each point is correlated with the past values. 
 
 <img src="https://user-images.githubusercontent.com/13570487/125725551-183ba71d-d824-44db-bee6-071410360c69.jpg" width=50% height=50%>
 
+GPR is a statistical machine learning technique based on a Bayesian approach that generates predictions following the behaviour of data (e.g. Gibbs & MacKay 1997; Rasmussen & Williams 2006). This method has been used in various fields. 
+
+In our analysis, we used [https://george.readthedocs.io/en/latest/](*George*) Python package, developed by \citet{2015ITPAM..38..252A}, to efficiently calculate the likelihood function. 
+
+### Particle Swarm Optimization (PSO)
+
+In this project, we use the PSO method to optimize the hyperparametrs of the 
+The Particle Swarm Optimization (PSO) technique wasoriginally developed  by  Kennedy  and  Eberhart  (1995); Shi and Eberhart (1998) to simulate the behavioral evolution of social organisms that are in group motions suchas bird flocks or fish schools. This approach leverages thepower of a swarm of particles to explore the parameterspace  hoping  to  find  the  optimum  solution. In this approach, each individual particle in the parameter space isdenoted by its position and velocity. The performance of each particle is evaluated based on the value of the objective function at its position. Each particle has a memory of its “best” previous position.  Moreover, the best position that is ever found in the past history of the evolution of all particles is recorded. In this optimization algorithm, the position and velocity of all particles are randomly initialized and iteratively updated. In each iteration, the position and velocity of each particle is updated according toits previous “best” location and the historical “best” position of the entire group. At the end of the desired number of iterations, the optimum point is reported to be the best position ever achieved by the ensemble of particles over the entire course of their evolution.
 
 
 
-## Jupyter Notebook
+## Jupyter Notebook (an implementation in Python)
 
 This notebook represetns how the GPR+PSO model has been implementd.
 
-+ GitHub ([https://github.com/ekourkchi/Weather_research/blob/master/HOBO_GPR_PSO.ipynb](here))
-+ Google Colab ([https://colab.research.google.com/drive/1N_zgGgf0pUAxjN3XdXOUCl9piThZsY7e?usp=sharing](here))
++ GitHub: https://github.com/ekourkchi/Weather_research/blob/master/HOBO_GPR_PSO.ipynb
++ Google Colab: https://colab.research.google.com/drive/1N_zgGgf0pUAxjN3XdXOUCl9piThZsY7e?usp=sharing
 

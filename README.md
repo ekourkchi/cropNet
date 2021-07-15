@@ -6,6 +6,7 @@ The main objective of this project is to collect and process data from the selec
 
 + To see the server in action please visit [https://cropnet.eng.hawaii.edu/](https://cropnet.eng.hawaii.edu/)
 + To learn how to use the **API**, please visit [https://cropnet.eng.hawaii.edu/api](https://cropnet.eng.hawaii.edu/api)
++ To read the technical draft of our forecasting methodology, please refer to this manuscript: [GPR_forecasting.pdf](https://github.com/ekourkchi/cropNet/blob/main/GPR_forecasting.pdf)
 
 ## Gaussian Process Autoregression
 

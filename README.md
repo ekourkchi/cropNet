@@ -13,7 +13,7 @@ To establish a benchmark for the most simple forecasting scenario, we execute th
 
 This analysis and all other analysis in this document are based on an autoregressive approach that assumes the pattern of fluctuations is repeated and the value at each point is correlated with the past values. 
 
-![photo_2021-07-14_20-40-18](https://user-images.githubusercontent.com/13570487/125725551-183ba71d-d824-44db-bee6-071410360c69.jpg | width=512)
+<img src="https://user-images.githubusercontent.com/13570487/125725551-183ba71d-d824-44db-bee6-071410360c69.jpg" width=50% height=50%>
 
 
 

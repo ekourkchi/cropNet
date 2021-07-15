@@ -46,10 +46,10 @@ The Particle Swarm Optimization (PSO) technique was originally developed  by  Ke
      - `forecaste_ETrain.py` runs the forecasts for all individual stations
 2. Forecasting Code(s)
    - `forecaste_ETrain.py` invokes the forecasting routine multiple times to predict ETo and Rainfall for the next days. The forecasts are stored in a separate table in the database for the future use of the API calls
-     - `forecast_ET.py` is the forecasting routine that leverages GPR+PSO methology to model the ETo and Rainfall time-series
+     - `forecast_ET.py` is the forecasting routine that leverages GPR+PSO methology to model the ETo and Rainfall time-series. The prototype of this code is also available in the [Jupyter Notebook](https://github.com/ekourkchi/Weather_research/blob/master/HOBO_GPR_PSO.ipynb) format, with more human readable comments.
 3. Python flask code to launch the API
    - `api_server.sh` starts setting up the API service when the server boots up
-     - `api_server.py` is the main python code that uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) package to handle the API requests. On each API call, the evaluated forecasts are queried from the database and the outputs are organized in the *JSON* format
+     - `api_server.py` is the main python code that uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) package to handle the API requests. On each API call, the latest evaluated forecasts are queried from the database and the outputs are organized in the *JSON* format
 
 
 ## Jupyter Notebook (an implementation in Python) <a name="notebook"></a>

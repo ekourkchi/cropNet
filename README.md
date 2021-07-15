@@ -39,7 +39,7 @@ The Particle Swarm Optimization (PSO) technique was originally developed  by  Ke
 ## Code Structure <a name="code"></a>
 
 1. Codes to extract data and populate the database
-   - `ETxls.sh` This script is executed once a day at 1:00 AM and updates the database and generates the forecasts for the next coming days
+   - `ETxls.sh` is executed once a day at 1:00 AM and updates the database and generates the forecasts for the next coming days
      - `Hobo_LONG_getData.py` extracts data for the HOBO stations and populates the local database
      - `ET2XLS_HOBO.py` Reorganizes data and stores daily ETo and Rainfall in an excel spreadsheet
      - `ET2XLS_Campbell.py` extracts data for the CAMPBELL stations and appends the output to the excel spreadsheet

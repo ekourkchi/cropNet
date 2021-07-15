@@ -4,12 +4,13 @@
 1. [Overview](#intro)
 2. [Gaussian Process Autoregression](#gpr)
 3. [Particle Swarm Optimization](#pso)
-4. [Jupyter Notebook](#notebook)
-5. [Disclaimer](#disclaimer)
+4. [Code Strucutre](#code)
+5. [Jupyter Notebook](#notebook)
+6. [Disclaimer](#disclaimer)
 
 ## Overview <a name="intro"></a>
 
-The main objective of this project is to collect and process data from the selected HOBO and CAMPBELL stations that are managed by this project. The stored data can be accessed through the URL queries. The server starts updating the local database at 1:00 AM (HST) and generates a set of forecasts for the future days. The entire process takes about an hour. This API only give access to the latest forecasts.
+The main objective of this project is to collect and process data from the selected HOBO and CAMPBELL stations that are managed by this project. The stored data can be accessed through the URL queries. The server starts updating the local database at 1:00 AM (HST) and generates a set of forecasts for the future days. The entire process takes about an hour. This API only gives access to the latest forecasts.
 
 + To read more about our forecasting methodology, please refer to the draft of our manuscript: [GPR_forecasting.pdf](https://github.com/ekourkchi/cropNet/blob/main/GPR_forecasting.pdf)
 + To see the server in action please visit [https://cropnet.eng.hawaii.edu/](https://cropnet.eng.hawaii.edu/)
@@ -34,6 +35,16 @@ The large number of hyperparameters and the size of the training data increases 
 <img src="https://user-images.githubusercontent.com/13570487/125727951-cfb74bf9-1619-4701-b0b4-4a9558561511.png" width=50% height=50%>
 
 The Particle Swarm Optimization (PSO) technique was originally developed  by  Kennedy  and  Eberhart  (1995); Shi and Eberhart (1998) to simulate the behavioral evolution of social organisms that are in group motions such as bird flocks or fish schools. This approach leverages the power of a swarm of particles to explore the parameter space  hoping  to  find  the  optimum  solution. In this approach, each individual particle in the parameter space is denoted by its position and velocity. The performance of each particle is evaluated based on the value of the objective function at its position. Each particle has a memory of its “best” previous position.  Moreover, the best position that is ever found in the past history of the evolution of all particles is recorded. In this optimization algorithm, the position and velocity of all particles are randomly initialized and iteratively updated. In each iteration, the position and velocity of each particle is updated according to its previous “best” location and the historical “best” position of the entire group. At the end of the desired number of iterations, the optimum point is reported to be the best position ever achieved by the ensemble of particles over the entire course of their evolution.
+
+## Code Structure <a name="code"></a>
+
+1. Codes to extract data and populate the database
+   - `ETxls.sh`
+     - `Hobo_LONG_getData.py`
+     - `ET2XLS_HOBO.py`
+     - `ET2XLS_Campbell.py`
+2. Forecasting codes
+
 
 
 ## Jupyter Notebook (an implementation in Python) <a name="notebook"></a>

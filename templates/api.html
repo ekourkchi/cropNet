@@ -1,0 +1,434 @@
+<html>
+<head>
+    <title>API - CropNet Weather Stations</title>
+    <META http-equiv="Content-Language" content="en-us"/>
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <META name="DC.author" content="Ehsan Kourkchi"/>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" charset="ISO-8859-1" type="text/css"/>
+
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+    <script type="text/javascript" src="/static/js/showdown.min.js"></script>
+    <script>
+      window.onload = init;
+      function init(){
+         
+          var mkdown =  document.getElementsByTagName('mkdown');
+          var converter = new showdown.Converter();
+          for(var i=0;i<mkdown.length;i++){
+             mkdown[i].innerHTML=converter.makeHtml(mkdown[i].innerHTML);
+             }
+      }
+
+    </script>
+
+<style>
+
+body {
+   
+    min-width: 800px;
+   
+    }
+
+._center {
+    margin: auto;
+    width: 75%;
+    min-width: 600px;
+    border: 0px solid #ccc;
+    padding: 10px;
+    margin-bottom:20px;
+    margin-top:10px;
+    margin-right:50px;
+    margin-left:210px;
+    text-align:justify;
+}
+
+#container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+   box-sizing: border-box;
+   padding-left: 20px;
+   background: green;
+   height:25px;
+   color: white;
+   margin-bottom:5px;
+   padding: 0px 5px 2px;
+}
+#body {
+}
+#footer {
+   box-sizing: border-box;
+   position:fixed;
+   bottom:0;
+   left: 0;
+   width:100%;
+   height:20px;
+   background: green;
+   font-size : 10pt;
+   color:white;
+}
+
+a.footerlink{
+   color:white;
+   font-size : 10pt;
+   text-decoration:underline;
+}
+a.footerlink:hover {
+   color:yellow;
+ 
+}
+
+
+ .floating-menu {
+    font-family: sans-serif;
+    background:  green;
+    padding: 5px;
+    width: 200px;
+    z-index: 100;
+    position: fixed;
+    margin-top: 20px;
+  }
+  .floating-menu a,
+  .floating-menu h3 {
+    font-size: 0.9em;
+    display: block;
+    margin: 0 0.5em;
+    color: white;
+  }
+  .floating-menu a:hover{
+      color:yellow;
+      }
+ 
+  .floating-menu li {
+      color: white;
+      }
+  .floating-menu li:hover {
+      color: yellow;
+      }
+ 
+ 
+  hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+ 
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 10px;
+}
+</style>
+
+
+</header>
+<body>
+
+<div id="container">
+<div id="body">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="https://cropnet.eng.hawaii.edu/">CropNet</a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02" style="float:right">
+      <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+             <a class="nav-link" href="https://cropnet.eng.hawaii.edu/api">API</a>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+
+  <nav class="floating-menu">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#list">List of Stations</a></li>
+      <li><a href="#daily">Get Daily Data</a></li>
+      <li><a href="#forecast">Get Daily Forecasts</a></li>
+    </ul>
+  </nav>
+
+
+<div class="_center">
+
+<mkdown>
+
+
+
+<a name="overview" /></a>
+
+# API
+
+### Overview
+
+The main objective of this project is to collect and process data from the selected HOBO and CAMPBELL stations that are managed by this project.
+The stored data can be accessed through the URL queries. The server starts updating the local database at 1:00 AM (HST) and generates a set of forecasts for the future days.
+The entire process takes about an hour.
+This API only give access to the latest forecasts. The historical forecasts are not accessible at this time.
+
+The forecasts for Evapotransportation is available for 1, 3 and 5 day(s) ahead of the last day with available measurements. 
+The forecast for the rainfall is only available for the next day. 
+
+
+<hr>
+
+<a name="list" /></a>
+### List of Stations
+
+This API uses the serial number or the code of each station to access the data. The following table lists all the available stations.
+
+</mkdown>
+<table>
+  <thead>
+  <tr>
+  <th style="text-align:center;">Serial No.</th>
+  <th style="text-align:left;">Name</th>
+  <th style="text-align:left;">Time Zone</th>
+  <th style="text-align:left;">Forecasts</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td style="text-align:center;">10906989</td>
+  <td style="text-align:left;">ALOUN HELEMANO HOBO</td>
+  <td style="text-align:left;">US/Hawaii</td>
+  <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/10906989" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20173022</td>
+    <td style="text-align:left;">HIRAKO HOBO</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20173022" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20009161</td>
+    <td style="text-align:left;">KULA AG PARK HOBO</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20009161" target="_blank">...</a></td>
+  </tr>
+   <tr>
+    <td style="text-align:center;">20121046</td>
+    <td style="text-align:left;">MALOJLOJ MEDA HOBO</td>
+    <td style="text-align:left;">Pacific/Guam</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20121046" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20006321</td>
+    <td style="text-align:left;">MA'O HOBO</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20006321" target="_blank">...</a></td>
+  </tr>
+   <tr>
+    <td style="text-align:center;">20173020</td>
+    <td style="text-align:left;">PIONEER CORN HOBO</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20173020" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20173019</td>
+    <td style="text-align:left;">SEIZEN HOBO</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20173019" target="_blank">...</a></td>
+  </tr>
+   <tr>
+    <td style="text-align:center;">20824841</td>
+    <td style="text-align:left;">WATSON HOBO</td>
+    <td style="text-align:left;">Pacific/Guam</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20824841" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20824842</td>
+    <td style="text-align:left;">WUSSTIG HOBO</td>
+    <td style="text-align:left;">Pacific/Guam</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20824842" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">20121045</td>
+    <td style="text-align:left;">YIGO WATSO HOBO</td>
+    <td style="text-align:left;">Pacific/Guam</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/20121045" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">PH1</td>
+    <td style="text-align:left;">PIONEER GAY CAMPBELL</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/PH1" target="_blank">...</a></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">PH2</td>
+    <td style="text-align:left;">PIONEER HELENANO CAMPBELL</td>
+    <td style="text-align:left;">US/Hawaii</td>
+    <td style="text-align:center;"><a href="https://cropnet.eng.hawaii.edu/api/forecast/PH2" target="_blank">...</a></td>
+  </tr>
+ </tbody>
+</table>
+
+<mkdown>
+  
+<hr>
+
+<a name="daily" /></a>
+### Get Daily Data
+
+This is the template URL to obtain the measured data by each individual station at any available date. 
+The output is presented in <span style="color:#264d73">JSON</span> format and can be parsed in any programming languages.
+
+</mkdown>
+<span style="color:blue">https://cropnet.eng.hawaii.edu/api/&#60;serial&#62;/&#60;date&#62;</span>
+<mkdown>
+<br>
++ **serial**: The serial number or the code of a station listed [above](#list)
++ **date**: The measurement date in the <span style="color:blue">YYYY-MM-DD</span> format.
+
+*Example:* [https://cropnet.eng.hawaii.edu/api/10906989/2021-07-04](https://cropnet.eng.hawaii.edu/api/10906989/2021-07-04)
+which returns the following <span style="color:#264d73">JSON</span> that holds *July/04/2021* measurements for *ALOUN HELEMANO HOBO* station.
+
+```
+{
+  "Data": {
+    "ETo": "0.054", 
+    "Rain": "0.214", 
+    "Tc": "21.65", 
+    "Tmax": "23.49", 
+    "Tmin": "19.93"
+  }, 
+  "Date": "2021-07-04", 
+  "Serial": "10906989", 
+  "Station": {
+    "GPS": "21.5356N  -158.0343W", 
+    "Name": "ALOUN HELEMANO HOBO", 
+    "timeZone": "US/Hawaii"
+  }, 
+  "Status": "success", 
+  "Units": {
+    "ETo": "Inch/day", 
+    "Rainfall": "Inch", 
+    "Temperature": "Celsius"
+  }
+}
+```
+
+The **Status** field is set to <span style="color:green">**"success"**</span> if data is available and the query is successful, otherwise it is set to <span style="color:red">**"failed"**</span>.
+
+
+<hr>
+
+<a name="forecast" /></a>
+### Get Daily Forecasts
+
+Here is the template URL to get the latest generated forecast for the coming days. Evapotranspiration (ETo) is predicted 
+for the 1, 3 and 5 day(s) ahead. Rainfall is predicted for the next day.
+The output is returned in <span style="color:#264d73">JSON</span> format and can be parsed in any programming languages.
+
+</mkdown>
+<span style="color:blue">https://cropnet.eng.hawaii.edu/api/forecast/&#60;serial&#62;</span>
+<mkdown>
+<br>
+
++ **serial**: The serial number or the code of a station listed [above](#list)
+
+*Example:* [https://cropnet.eng.hawaii.edu/api/forecast/PH2](https://cropnet.eng.hawaii.edu/api/forecast/PH2)
+This returns the latest forecast data. **Note** that the following output example has been generated on the day of preparing this document. Therefore, the current output results depend on the day of sending of the query. 
+The historical forecasts are not available at this time and only the latest forecasts are provided via this API.
+
+Some brief information about some of the parameters are provided in the **Metadata** field. Other parameters are self explanatory. 
+The structure of the output <span style="color:#264d73">JSON</span> data might be slightly different than the following data as necasary updated as we upgrade/update the API and the back-end pipeline.
+
+```
+{
+  "ETo_ave3": "0.173", 
+  "Forecast": {
+    "Day1_ahead": {
+      "Date": "2021-07-13", 
+      "ETo": {
+        "ETo": "0.166", 
+        "MAE": "0.027", 
+        "R2": "0.54"
+      }, 
+      "Rain": {
+        "MAE": "0.139", 
+        "R2": "0.67", 
+        "Rain": "0.031"
+      }
+    }, 
+    "Day3_ahead": {
+      "Date": "2021-07-15", 
+      "ETo": {
+        "ETo": "0.166", 
+        "MAE": "0.029", 
+        "R2": "0.48"
+      }
+    }, 
+    "Day5_ahead": {
+      "Date": "2021-07-17", 
+      "ETo": {
+        "ETo": "0.167", 
+        "MAE": "0.030", 
+        "R2": "0.46"
+      }
+    }
+  }, 
+  "Last_date": "2021-07-12", 
+  "Metadata": {
+    "ETo_ave3": "The average of the measured ETo in the previous three days", 
+    "Last_date": "The most recent date with available measurements", 
+    "MAE": "Mean Absolute Error of the model that is evaluated based on the training data", 
+    "R2": "R-squared, a statistical measure of how closely the model fits the data", 
+    "Rain_ave3": "The average of the measured rainfall in the previous three days", 
+    "last_update": "The server clock when the latest forecasts were processed"
+  }, 
+  "Rain_ave3": "0.017", 
+  "Serial": "PH2", 
+  "Station": {
+    "GPS": "21.565335N  -158.097097W", 
+    "Name": "PIONEER HELENANO CAMPBELL", 
+    "timeZone": "US/Hawaii"
+  }, 
+  "Units": {
+    "ETo": "Inch/day", 
+    "Rainfall": "Inch", 
+    "Temperature": "Celsius"
+  }, 
+  "last_update": "2021-07-13 02:03:23 HST", 
+  "status": "success"
+}
+```
+
+
+
+<hr>
+
+</mkdown>
+
+</div>   <!-- center -->
+
+
+</div>  <!-- body -->
+<div id="footer">
+<span> &#160;&#160;&#9400; Copyright CropNet (PI: S. Bateni)</span>
+</div>   <!-- footer -->
+</div>   <!-- container -->
+
+
+
+
+</body>
+</html>
+
+
+

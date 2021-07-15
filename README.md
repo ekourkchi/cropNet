@@ -7,5 +7,21 @@ The main objective of this project is to collect and process data from the selec
 + To see the server in action please visit [https://cropnet.eng.hawaii.edu/](https://cropnet.eng.hawaii.edu/)
 + To learn how to use the **API**, please visit [https://cropnet.eng.hawaii.edu/api](https://cropnet.eng.hawaii.edu/api)
 
+## Introduction
 
+To establish a benchmark for the most simple forecasting scenario, we execute the basic GPR code (implemented in Matlab). In this scenario, the entire series is used for training, except the last three years that is used for testing. 
+
+This analysis and all other analysis in this document are based on an autoregressive approach that assumes the pattern of fluctuations is repeated and the value at each point is correlated with the past values. 
+
+![photo_2021-07-14_20-40-18](https://user-images.githubusercontent.com/13570487/125725551-183ba71d-d824-44db-bee6-071410360c69.jpg)
+
+
+
+
+## Jupyter Notebook
+
+This notebook represetns how the GPR+PSO model has been implementd.
+
++ GitHub ([https://github.com/ekourkchi/Weather_research/blob/master/HOBO_GPR_PSO.ipynb](here))
++ Google Colab ([https://colab.research.google.com/drive/1N_zgGgf0pUAxjN3XdXOUCl9piThZsY7e?usp=sharing](here))
 

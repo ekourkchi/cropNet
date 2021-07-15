@@ -16,9 +16,9 @@ This analysis and all other analysis in this document are based on an autoregres
 
 <img src="https://user-images.githubusercontent.com/13570487/125725551-183ba71d-d824-44db-bee6-071410360c69.jpg" width=50% height=50%>
 
-GPR is a statistical machine learning technique based on a Bayesian approach that generates predictions following the behavior of data (e.g. Gibbs & MacKay 1997; Rasmussen & Williams 2006). This method has been used in various fields.
+GPR is a statistical machine learning technique based on a Bayesian approach that generates predictions following the behavior of data (e.g. Gibbs & MacKay 1997; Rasmussen & Williams 2006).
 
-In our analysis, we used [*George Python Package*](https://george.readthedocs.io/en/latest/), developed by Ambikasaran et al. (2015), to efficiently calculate the likelihood function and to make predictions.
+In our analysis, we use [*George Python Package*](https://george.readthedocs.io/en/latest/), developed by Ambikasaran et al. (2015), to efficiently calculate the likelihood function and to make predictions.
 
 ### Particle Swarm Optimization (PSO)
 

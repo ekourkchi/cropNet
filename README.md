@@ -35,3 +35,8 @@ This notebook represents how the GPR+PSO model has been implemented.
 
 + [GitHub](https://github.com/ekourkchi/Weather_research/blob/master/HOBO_GPR_PSO.ipynb)
 + [Google Colab](https://colab.research.google.com/drive/1N_zgGgf0pUAxjN3XdXOUCl9piThZsY7e?usp=sharing)
+
+## Disclaimer <a name="Disclaimer"></a>
+
+ * All rights reserved. The material may not be reproduced or distributed, in whole or in part, without the prior agreement
+ * Contact: *Ehsan Kourkchi* <ekourkchi@gmail.com>

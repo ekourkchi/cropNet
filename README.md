@@ -43,7 +43,14 @@ The Particle Swarm Optimization (PSO) technique was originally developed  by  Ke
      - `Hobo_LONG_getData.py`
      - `ET2XLS_HOBO.py`
      - `ET2XLS_Campbell.py`
-2. Forecasting codes
+     - `forecaste_ETrain.py`
+2. Forecasting Code(s)
+   - `forecaste_ETrain.py`
+     - `forecast_ET`
+3. Python flask code to launch the API
+   - `api_server.sh`
+     - `api_server.py`
+
 
 
 

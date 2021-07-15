@@ -39,19 +39,17 @@ The Particle Swarm Optimization (PSO) technique was originally developed  by  Ke
 ## Code Structure <a name="code"></a>
 
 1. Codes to extract data and populate the database
-   - `ETxls.sh` -> This script is executed once a day at 1:00 AM and updates the database and generates the forecasts for the next coming days
-     - `Hobo_LONG_getData.py`
-     - `ET2XLS_HOBO.py`
-     - `ET2XLS_Campbell.py`
-     - `forecaste_ETrain.py`
+   - `ETxls.sh` This script is executed once a day at 1:00 AM and updates the database and generates the forecasts for the next coming days
+     - `Hobo_LONG_getData.py` extracts data for the HOBO stations and populates the local database
+     - `ET2XLS_HOBO.py` Reorganizes data and stores daily ETo and Rainfall in an excel spreadsheet
+     - `ET2XLS_Campbell.py` extracts data for the CAMPBELL stations and appends the output to the excel spreadsheet
+     - `forecaste_ETrain.py` runs the forecasts for all individual stations
 2. Forecasting Code(s)
-   - `forecaste_ETrain.py`
-     - `forecast_ET`
+   - `forecaste_ETrain.py` invokes the forecasting routine multiple times to predict ETo and Rainfall for the next days. The forecasts are stored in a separate table in the database for the future use of the API calls
+     - `forecast_ET.py` is the forecasting routine that leverages GPR+PSO methology to model the ETo and Rainfall time-series
 3. Python flask code to launch the API
-   - `api_server.sh`
-     - `api_server.py`
-
-
+   - `api_server.sh` starts setting up the API service when the server boots up
+     - `api_server.py` is the main python code that uses the [Flask](https://flask.palletsprojects.com/en/2.0.x/) package to handle the API requests. On each API call, the evaluated forecasts are queried from the database and the outputs are organized in the *JSON* format
 
 
 ## Jupyter Notebook (an implementation in Python) <a name="notebook"></a>

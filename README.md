@@ -12,7 +12,7 @@
 
 The main objective of this project is to collect and process data from the selected HOBO and CAMPBELL stations that are managed by this project. The stored data can be accessed through the URL queries. The server starts updating the local database at 1:00 AM (HST) and generates a set of forecasts for the future days. The entire process takes about an hour. This API only gives access to the latest forecasts.
 
-+ To read more about our forecasting methodology, please refer to the draft of our manuscript: [GPR_forecasting.pdf](https://github.com/ekourkchi/cropNet/blob/main/GPR_forecasting.pdf)
++ To read about the technical details of our methodology, please refer to the draft of our manuscript: [GPR_forecasting.pdf](https://github.com/ekourkchi/cropNet/blob/main/GPR_forecasting.pdf)
 + To see the server in action please visit [https://cropnet.eng.hawaii.edu/](https://cropnet.eng.hawaii.edu/)
 + To learn how to use the **API**, please visit [https://cropnet.eng.hawaii.edu/api](https://cropnet.eng.hawaii.edu/api)
 

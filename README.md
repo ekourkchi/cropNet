@@ -30,7 +30,8 @@ In our analysis, we use [*George Python Package*](https://george.readthedocs.io/
 
 ### Particle Swarm Optimization (PSO) <a name="pso"></a>
 
-The large number of hyperparameters and the size of the training data increases the complexity of the optimization algorithms, calling for an extensive computational power. We use the Particle Swarm Optimization (PSO) algorithm to explore the hyperparameter space to maximize the likelihood function.
+The large number of hyperparameters and the size of the training data increases the complexity of the optimization algorithms, calling for an extensive computational power. We use the Particle Swarm Optimization (PSO) algorithm to explore the hyperparameter space to maximize the likelihood function. Any GPR model is described by its kernel function and the values of its hyperparameters. The objective is to benefit from the power of a swarm of particles to explore the hyper-space with the aim of reaching the highest possible performance of the GPR model.
+
 
 <img src="https://user-images.githubusercontent.com/13570487/125727951-cfb74bf9-1619-4701-b0b4-4a9558561511.png" width=50% height=50%>
 

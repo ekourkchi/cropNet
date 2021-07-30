@@ -57,20 +57,46 @@ def home():
 
 
 @app.route('/<serial>/<date>', methods=['GET'])
-def dailyData(serial, date):
+def chosenDate(serial, date):
+    return dailyData(serial, date=None)
 
-    date = str(date)  # date is originally in the form of an integer
-    date_str = date[:4] + '-' + date[5:7] + '-' + date[8:10]
+@app.route('/<serial>', methods=['GET'])
+def lastDate(serial):
+    return dailyData(serial)
+    
+
+def queryMaker(serial, date=None):
 
     db_table = serial + "_ETdata"
+
+    queryTail = " order by Date desc limit 1;"
+
+    if date is not None:
+        date = str(date)  # date is originally in the form of an YYYY-MM-dd
+        date_str = date[:4] + '-' + date[5:7] + '-' + date[8:10]
+        queryTail = " where Date='" + date_str + "';"
+        queryMid = ""
+
+    if serial == 'PH1' or serial == 'PH2':
+        query = "select `Temp.raw`, `ETo.raw`, `Rainfall.raw`, Date from " + \
+                db_table + queryTail
+    else:
+        query = "select Tc, Tmin, Tmax, ETo_CIMIS_raw, Rain_raw, Date from " + \
+                db_table + queryTail
+    
+    return query
+
+
+
+def dailyData(serial, date=None):
+
     Data = None
     status = 'success'
 
     try:
 
         if serial == 'PH1' or serial == 'PH2':
-            query = "select `Temp.raw`, `ETo.raw`, `Rainfall.raw`  from " + \
-                db_table + " where Date='" + date_str + "';"
+            query = queryMaker(serial, date)
             sql_query = sqlalchemy.text(query)
             with engine.connect() as connection:
                 result = connection.execute(sql_query)
@@ -90,10 +116,10 @@ def dailyData(serial, date):
                 Rain = 'nan'
 
             Data = {'Tc': Tc, 'ETo': ETo, 'Rain': Rain}
+            date_str = result[3]
 
         else:
-            query = "select Tc, Tmin, Tmax, ETo_CIMIS_raw, Rain_raw from " + \
-                db_table + " where Date='" + date_str + "';"
+            query = queryMaker(serial, date)
             sql_query = sqlalchemy.text(query)
             with engine.connect() as connection:
                 result = connection.execute(sql_query)
@@ -126,6 +152,8 @@ def dailyData(serial, date):
                 'Tmax': Tmax,
                 'ETo': ETo,
                 'Rain': Rain}
+
+            date_str = result[5]
 
     except BaseException:
         status = 'failed'

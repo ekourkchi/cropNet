@@ -51,18 +51,27 @@ def home():
     localhost:5000/
     :return:        the rendered template 'api.html'
     """
-    return render_template('api.html')
+
+    webDict = {}
+    for serial in stationInfo:
+        try:
+            date  = dailyData(serial)['Date']
+            webDict[serial] = date
+        except:
+            webDict[serial] = ''
+
+    return render_template('api.html', webDict=webDict)
 
 ##########################################################################
 
 
 @app.route('/<serial>/<date>', methods=['GET'])
 def chosenDate(serial, date):
-    return dailyData(serial, date=None)
+    return jsonify(dailyData(serial, date=None))
 
 @app.route('/<serial>', methods=['GET'])
 def lastDate(serial):
-    return dailyData(serial)
+    return jsonify(dailyData(serial))
     
 
 def queryMaker(serial, date=None):
@@ -91,6 +100,7 @@ def queryMaker(serial, date=None):
 def dailyData(serial, date=None):
 
     Data = None
+    date_str = None
     status = 'success'
 
     try:
@@ -166,8 +176,10 @@ def dailyData(serial, date=None):
 
     units = {"Temperature": "Celsius", "ETo": "Inch/day", "Rainfall": "Inch"}
 
-    return jsonify({'Status': status, 'Serial': serial, 'Station': station,
-                    'Date': date_str, 'Data': Data, "Units": units})
+    outDict = {'Status': status, 'Serial': serial, 'Station': station,
+                    'Date': date_str, 'Data': Data, "Units": units}
+
+    return outDict
 
 ##########################################################################
 
